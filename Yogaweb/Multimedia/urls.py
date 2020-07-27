@@ -10,7 +10,7 @@ urlpatterns = [
     path('Videos/', views.vid_list, name='vid_list'),  # its  worked
     path('Images/upload/', views.upload_img, name='upload_img'),  # its worked
     path('Video/upload/', views.upload_video, name='upload_video'),  # its  worked
-    path('delete-blog/<int:id>/', views.delete_blog, name='delete_blog'),  # its  not  work
+    path('delete-blog/<int:id>/', views.delete_blog, name='delete_blog'),  # its  worked
     path('update-blog/<int:id>/', views.update_blog, name='update_blog'),  # its  worked
 
 ]
