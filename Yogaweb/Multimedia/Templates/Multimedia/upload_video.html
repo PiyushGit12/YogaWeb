@@ -1,0 +1,14 @@
+{% extends "Multimedia/base.html" %}
+{% load crispy_forms_tags%}
+
+{% block content %}
+<h2> This is the Video upload page </h2> </p>
+
+<form enctype="multipart/form-data" method="POST" action="">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" , class="btn btn-primary">Upload New Video</button>
+
+</form>
+{% endblock content %}
+

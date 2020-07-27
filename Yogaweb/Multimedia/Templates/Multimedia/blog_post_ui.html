@@ -1,0 +1,75 @@
+{% extends "Multimedia/base.html" %}
+{% load crispy_forms_tags%}
+{% block content %}
+
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+#t01 {
+  width: 100%;
+  background-color: #f1f1c1;
+}
+
+
+</style>
+
+<meta charset="UTF-8">
+<title>Blog_View</title>
+
+<h1>This is the Blog View page</h1>
+<small>
+    {% if user.is_authenticated %}
+    <li>Logged in {{request.user.username}}</li>
+    <li><a href="{% url 'user_logout' %}"> Logout </a></li>
+    {% else %}
+    <li><a href="{% url 'signup' %}"> Signup </a></li>
+    <li><a href="{% url 'user_login' %}"> Login </a></li>
+    {% endif %}
+</small>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <a href="{% url 'blog_post_upload' %}"> Create New Blog </a>
+
+
+</form>
+<table class="table mb-0">
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Author_Name</th>
+        <th>Content</th>
+        <th>File Attached</th>
+        <th>Edit/Delete-Post</th>
+    </tr>
+    </thead>
+    <body>
+    {% for bgl in blog_list %}
+    <tr>
+        <td>{{bgl.title}}</td>
+        <td>{{bgl.author_name}}</td>
+        <td>{{bgl.body}}<small><br>{{bgl.created|date}}</small></td>
+        <td><a href="{{bgl.File_f.url}}"></a>
+            <small>
+                <video
+                        width="420" height="340" controls>
+                    <source src="{{ bgl.File_f.url }}" type="video/mp4">
+                </video>
+            </small>
+        <td><a href="{% url 'update_blog' bgl.id %}"> Edit Post </a><br>
+            <a href="{% url 'delete_blog' bgl.id %}"> Delete Post </a>
+        </td>
+        </td>
+        {% endfor %}
+    </tr>
+
+    </body>
+</table>
+
+{% endblock content %}

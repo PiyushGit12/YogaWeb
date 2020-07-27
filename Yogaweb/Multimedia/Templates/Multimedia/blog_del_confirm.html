@@ -1,0 +1,55 @@
+{% extends "Multimedia/base.html" %}
+{% load crispy_forms_tags%}
+{% block content %}
+
+<style>
+.button {
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button1 {
+  background-color: white;
+  color: black;
+  border: 2px solid #4CAF50;
+}
+
+.button1:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.button2 {
+  background-color: white;
+  color: black;
+  border: 2px solid #008CBA;
+}
+
+.button2:hover {
+  background-color: #008CBA;
+  color: white;
+}
+
+</style>
+<h2> Confirm delete Blog  </h2>
+
+<body>
+ <form method="POST">
+     {% csrf_token %}
+     <h2> Are you sure you want to remove {{ del_blog.title }} ?</h2>
+     <button class="button button1", type="submit"> Confirm </button>
+      <button class="button button2", type="submit"> Cancel </button>
+
+ </form>
+</body>
+
+{% endblock content %}
+

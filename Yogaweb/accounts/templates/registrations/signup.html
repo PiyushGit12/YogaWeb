@@ -1,0 +1,15 @@
+{% extends "Multimedia/base.html" %}
+{% block content %}
+
+<h2> SignUp Page  </h2>
+<form method="post" >
+             {% csrf_token %}
+             <table>
+
+                 <tr>
+                    <td>  {{ form.as_table }}</td>
+                    <td><input type="submit" name="submit" value="Register" /></td>
+                </tr>
+             </table>
+         </form>
+{% endblock content %}

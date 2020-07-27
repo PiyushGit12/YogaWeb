@@ -1,0 +1,19 @@
+{% extends "Multimedia/base.html" %}
+{% load crispy_forms_tags%}
+{% block content %}
+<body>
+<h1> This is the blog post </h1>
+
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p}}
+    <button type="submit" class="btn btn-success btn-sm"> Upload Post</button>
+
+
+</form>
+{% if del_blog %}
+       <a href="{% url 'delete_blog' del_blog.id %}"> Delete </a>
+{% endif %}
+</body>
+{% endblock %}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Images gallery</title>
+    <h2> Images-gallery</h2>
+    <table class="table mb-0">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>PDF</th>
+            <th>Downdload</th>
+        </tr>
+        </thead>
+        <body>
+          {% for img in images %}
+          <tr>
+              <td>{{img.name}}</td>
+              <td> <a href="{{img.pdf.url}}" class="btn btn-primary btn-sm", target="_blank">Downdload PDF</a> </td>
+          </tr>
+
+          {% endfor %}
+</body>
+
+    </table>
+</head>
+<body>
+
+</body>
+</html>

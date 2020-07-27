@@ -1,0 +1,49 @@
+{% extends "Multimedia/base.html" %}
+{% load crispy_forms_tags%}
+{% block content %}
+
+
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+#t01 {
+  width: 100%;
+  background-color: #f1f1c1;
+}
+
+</style>
+
+ <title>Video Gallery</title>
+    <h2> Video Gallery </h2>
+    <table class="table mb-0">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Author</th>
+            <th> File Attached</th>
+        </tr>
+        </thead>
+<body>
+
+{% for vd in videos %}
+    <tr>
+        <td>{{vd.Title}}</td>
+        <td>{{vd.Author}}</td>
+        <td><a href="{{vd.VideoFile.url}}"></a>
+            <small>
+                <video width="320" height="240" controls>
+                    <source src="{{vd.VideoFile.url}}" type="video/mp4">
+                </video>
+            </small>
+        </td>
+    </tr>
+    {% endfor %}
+
+</body>
+{% endblock content %}
